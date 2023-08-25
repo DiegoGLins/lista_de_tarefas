@@ -11,14 +11,20 @@ export const ItemStyled = styled.div<ItemStyledProps>`
     border-radius: 10px;
     margin-bottom: 10px;
     align-items: center;
+    margin-top: 20px;
+    justify-content: center;
 
     input {
     width: 25px;
     height: 25px;
     margin-right: 5px;
     }
-
-    label {
-    color: #ccc;
-    text-decoration: ${props => props.done ? 'line-through' : 'initial'} ;
-    }`
+    
+    P {
+        padding-inline-start: 10px;
+        font-size: 15px;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    }
+    
+    
+    `
