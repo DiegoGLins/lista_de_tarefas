@@ -1,31 +1,16 @@
 import * as A from './styles';
-import { useState, KeyboardEvent } from 'react'
-
+// import { useState } from 'react'
 
 interface AreaProps {
-    onEnter: (taskName: string) => void
+    children: React.ReactNode
 }
 
-export const Area: React.FC<AreaProps> = ({ onEnter }) => {
-
-    const [inputText, setInputText] = useState('')
-
-    const handleKeyUp = (e: KeyboardEvent) => {
-        if (e.code === 'Enter' && inputText !== '') {
-            onEnter(inputText)
-            setInputText('')
-        }
-    }
+export const Area: React.FC<AreaProps> = ({ children }) => {
 
     return (
         <A.AreaStyled>
             <div className='image'>{'\u2795'}</div>
-            <input type="text"
-                placeholder='Adicione uma tarefa'
-                value={inputText}
-                onChange={e => setInputText(e.target.value)}
-                onKeyUp={handleKeyUp}
-            />
+            {children}
         </A.AreaStyled>
     )
 }
