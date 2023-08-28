@@ -5,6 +5,8 @@ import ButtonDefault from './components/Button/ButtonDefault';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { Alert, Button, IconButton, Snackbar, TextField } from '@mui/material';
 import EditIcon from '@mui/icons-material/Edit';
+import { v4 as uuidv4 } from 'uuid';
+
 
 
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
@@ -14,7 +16,7 @@ import BasicModal from './components/Modal';
 import DialogConfirm from './components/DailogConfirm';
 import AlertStyled from './components/AlertStyled';
 
-
+const API_BASE_URL = 'http://localhost:3000';
 
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<ItemType[]>([]);
@@ -28,15 +30,40 @@ const App: React.FC = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState<boolean>(false)
   const [openAlert, setOpenAlert] = useState<boolean>(false)
 
+  const fetchTasks = useCallback(() => {
+    fetch(`${API_BASE_URL}/tasks`)
+      .then(response => response.json())
+      .then(data => setTasks(data))
+      .catch(error => {
+        console.error('Erro ao buscar tarefas:', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
+
   const addTask = useCallback((name: string) => {
     const newTask: ItemType = {
-      id: tasks.length + 1,
+      id: uuidv4(),
       name,
       done: false,
     };
-    setTasks(prevTasks => [...prevTasks, newTask]);
-    setInputText('')
-  }, [tasks]);
+  
+    fetch(`${API_BASE_URL}/tasks`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(newTask),
+    }).then(response => {
+      if (response.ok) {
+        setInputText('');
+      }
+    });
+  }, []);
+  
+
 
   const editListTask = () => {
     const editListTask = [...tasks];
@@ -46,20 +73,35 @@ const App: React.FC = () => {
     if (taskModal.length < 5) {
       return alert('Por favor digite uma descrição com no mínio 5 caractéres')
     }
-    setTasks(editListTask);
-    setEditModal(false);
-  }
+    fetch(`${API_BASE_URL}/tasks/${editTask?.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: taskModal }),
+    }).then(response => {
+      if (response.ok) {
+        setTasks(editListTask);
+        setEditModal(false);
+      }
+    });
+  };
 
   const deleteListTask = () => {
     const index = tasks.findIndex(item => item.id === taskDelete?.id);
     const deleteTask = [...tasks];
-    deleteTask.splice(index, 1)
-
-    setTasks(deleteTask);
-    setOpenDeleteDialog(false);
-    handleCloseAlert()
-
-  }
+    deleteTask.splice(index, 1);
+  
+    fetch(`${API_BASE_URL}/tasks/${taskDelete?.id}`, {
+      method: 'DELETE',
+    }).then(response => {
+      if (response.ok) {
+        setTasks(deleteTask);
+        setOpenDeleteDialog(false);
+        handleCloseAlert();
+      }
+    });
+  };
 
   const filteredTasks = useMemo(() => {
     if (filter === 'done') {
@@ -71,7 +113,7 @@ const App: React.FC = () => {
     }
   }, [tasks, filter]);
 
-  const toggleTask = useCallback((taskId: number) => {
+  const toggleTask = useCallback((taskId: string) => {
     setTasks(prevTasks =>
       prevTasks.map(task =>
         task.id === taskId ? { ...task, done: !task.done } : task
@@ -111,8 +153,9 @@ const App: React.FC = () => {
 
       <Component.Area>
         <Component.Header>
-          Lista de Tarefas
+          Daily Quests ⚔
         </Component.Header>
+        <section>
         <Area>
           <input type="text"
             placeholder='Adicione uma tarefa'
@@ -121,6 +164,7 @@ const App: React.FC = () => {
           />
           <button onClick={() => addTask(inputText)}>Adicionar Tarefa</button>
         </Area>
+        </section>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: '15px' }}>
           <ButtonDefault actionConfirm={() => setFilter('Todas')} title={'Todas'} />
@@ -130,6 +174,7 @@ const App: React.FC = () => {
 
         {filteredTasks.map(task => (
           <div key={task.id}>
+            <section>
             <ItemStyled done={task.done}>
               <input
                 type="checkbox"
@@ -148,6 +193,7 @@ const App: React.FC = () => {
                 </IconButton>
               </div>
             </ItemStyled>
+            </section>
           </div>
         ))}
       </Component.Area>

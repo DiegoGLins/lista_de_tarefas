@@ -6,6 +6,7 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+  box-sizing: border-box;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,26 +16,109 @@
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+  color: #007bff;
+  text-decoration: none;
+  background-color: transparent;
 }
 
 a:hover {
-  color: #535bf2;
+  color: #0056b3;
+  text-decoration: underline;
+}
+
+a:not([href]):not([tabindex]) {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):hover,
+a:not([href]):not([tabindex]):focus {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:not([href]):not([tabindex]):focus {
+  outline: 0;
 }
 
 body {
-  margin: 0;
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 24px;
+  text-decoration: none solid rgb(10, 0, 0);
+  text-align: center;
+  text-indent: 0px;
+  text-transform: none;
+  vertical-align: middle;
+  white-space: normal;
+  word-spacing: 0px;
+
+  /* Color & Background */
+  background-attachment: scroll;
+  background-color: rgb(16, 141, 224);
+  background-image: none;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+  color: rgb(255, 255, 255);
+
+  /* Box */
+  border: 4px solid rgb(0, 0, 0);
+  border-top: 4px solid rgb(0, 0, 0);
+  border-right: 4px solid rgb(0, 0, 0);
+  border-bottom: 4px solid rgb(0, 0, 0);
+  border-left: 4px solid rgb(0, 0, 0);
+  margin: 0px;
+  padding: 6px 8px;
+  max-height: none;
+  min-height: 0px;
+  max-width: none;
+  min-width: 0px; 
+  /* Positioning */
+  position: relative;
+  top: 0px;
+  bottom: 0px;
+  /* Table */
+  border-collapse: separate;
+  border-spacing: 0px 0px;
+  caption-side: top;
+  empty-cells: show;
+  table-layout: auto; 
+  /* Effects */
+  transform: none;
+  transition: all 0s ease 0s;
+  outline-offset: 0px;
+  box-sizing: border-box;
+  resize: none;
+  text-shadow: none;
+  text-overflow: clip;
+  word-wrap: normal;
+  box-shadow: rgba(0, 107, 179, 0.3) 0px 0px 0px 6px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
 
+
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+font-size: 32px;
+font-weight: 700;
+line-height: 48px;
+text-decoration: none solid rgb(33, 37, 41);
+text-align: left;
+word-spacing: 0px;
+margin: 0 0 8px 0;
+display: block;
+transform: none;
+transition: all 0s ease 0s;
+box-sizing: border-box;
 }
 
 button {
-  border-radius: 8px;
+  /* border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -42,29 +126,149 @@ button {
   font-family: inherit;
   background-color: #1a1a1a;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s; */
+  /* Font & Text */
+  /* font-family: "Press Start 2P"; */
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 24px;
+  text-decoration: none solid rgb(10, 0, 0);
+  text-align: center;
+  text-indent: 0px;
+  text-transform: none;
+  vertical-align: middle;
+  white-space: normal;
+  word-spacing: 0px;
+  
+  /* Color & Background */
+  background-attachment: scroll;
+  background-color: rgb(16, 141, 224);
+  background-image: none;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+  /* color: rgb(255, 255, 255); */
+  
+  /* Box */
+  height: 44px;
+  width: 136px;
+  border: 4px solid rgb(0, 0, 0);
+  border-top: 4px solid rgb(0, 0, 0);
+  border-right: 4px solid rgb(0, 0, 0);
+  border-bottom: 4px solid rgb(0, 0, 0);
+  border-left: 4px solid rgb(0, 0, 0);
+  margin: 4px 4px 24px;
+  padding: 6px 8px;
+  max-height: none;
+  min-height: 0px;
+  max-width: none;
+  min-width: 0px; 
+  /* Positioning */
+  position: relative;
+  top: 0px;
+  bottom: 0px;
+  /* Table */
+  border-collapse: separate;
+  border-spacing: 0px 0px;
+  border-radius: 0;
+  caption-side: top;
+  empty-cells: show;
+  table-layout: auto; 
+  /* Effects */
+  transform: none;
+  transition: all 0s ease 0s;
+  outline-offset: 0px;
+  box-sizing: border-box;
+  resize: none;
+  text-shadow: none;
+  text-overflow: clip;
+  word-wrap: normal;
+  box-shadow: rgba(0, 107, 179, 0.3) 0px 0px 0px 6px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px; 
 }
 
-button:hover {
-  border-color: #646cff;
-}
+button:hover
 
 button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+div {
+  transform: none;
+  transition: all 0s ease 0s;
+  box-sizing: border-box;
+}
+section {
+	/* Font & Text */
+	font-family: "Press Start 2P";
+	font-size: 16px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 400;
+	letter-spacing: normal;
+	line-height: 24px;
+	text-decoration: none solid rgb(33, 37, 41);
+	text-align: left;
+	text-indent: 0px;
+	text-transform: none;
+	vertical-align: baseline;
+	white-space: normal;
+	word-spacing: 0px;
 
-  a:hover {
-    color: #747bff;
-  }
+	/* Color & Background */
+	background-attachment: scroll;
+	background-color: rgba(0, 0, 0, 0);
+	background-image: none;
+	background-position: 0% 0%;
+	background-repeat: repeat;
+	color: rgb(33, 37, 41);
 
-  button {
-    background-color: #f9f9f9;
-  }
+	/* Box */
+	height: 91.2031px;
+	width: 980px;
+	border: 4px solid rgb(0, 0, 0);
+	border-top: 4px solid rgb(0, 0, 0);
+	border-right: 4px solid rgb(0, 0, 0);
+	border-bottom: 4px solid rgb(0, 0, 0);
+	border-left: 4px solid rgb(0, 0, 0);
+  justify-content: center;
+	margin: 0px;
+	padding: 24px 32px 40px;
+	max-height: none;
+	min-height: 0px;
+	max-width: none;
+	min-width: 0px;
+
+	/* Positioning */
+	position: relative;
+	top: 0px;
+	caption-side: top;
+	empty-cells: show;
+	table-layout: auto;
+
+	/* Miscellaneous */
+	overflow: visible;
+	visibility: visible;
+
+	/* Effects */
+	transform: none;
+	transition: all 0s ease 0s;
+	outline: rgb(255, 0, 0) dashed 1px;
+	outline-offset: 0px;
+	box-sizing: border-box;
+	resize: none;
+	text-shadow: none;
+	text-overflow: clip;
+	word-wrap: normal;
+	box-shadow: none;
+	border-top-left-radius: 0px;
+	border-top-right-radius: 0px;
+	border-bottom-left-radius: 0px;
+	border-bottom-right-radius: 0px;
 }
