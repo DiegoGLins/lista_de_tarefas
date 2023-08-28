@@ -153,8 +153,9 @@ const App: React.FC = () => {
 
       <Component.Area>
         <Component.Header>
-          Lista de Tarefas
+          Daily Quests ⚔
         </Component.Header>
+        <section>
         <Area>
           <input type="text"
             placeholder='Adicione uma tarefa'
@@ -163,6 +164,7 @@ const App: React.FC = () => {
           />
           <button onClick={() => addTask(inputText)}>Adicionar Tarefa</button>
         </Area>
+        </section>
 
         <div style={{ display: 'flex', justifyContent: 'center', gap: '15px' }}>
           <ButtonDefault actionConfirm={() => setFilter('Todas')} title={'Todas'} />
@@ -172,6 +174,7 @@ const App: React.FC = () => {
 
         {filteredTasks.map(task => (
           <div key={task.id}>
+            <section>
             <ItemStyled done={task.done}>
               <input
                 type="checkbox"
@@ -190,6 +193,7 @@ const App: React.FC = () => {
                 </IconButton>
               </div>
             </ItemStyled>
+            </section>
           </div>
         ))}
       </Component.Area>

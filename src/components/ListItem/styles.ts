@@ -9,10 +9,8 @@ export const ItemStyled = styled.div<ItemStyledProps>`
     background-color: #20212C;
     padding: 10px;
     border-radius: 10px;
-    margin-bottom: 10px;
     align-items: center;
-    margin-top: 20px;
-    justify-content: center;
+    margin-top: 10px;
 
     input {
     width: 25px;
