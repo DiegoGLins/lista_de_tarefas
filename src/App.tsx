@@ -179,8 +179,7 @@ const App: React.FC = () => {
         {filteredTasks.map(task => (
           <div key={task.id}>
       <section>
-      {tasks.map(task => (
-        <ItemStyled done={task.done} key={task.id}>
+        <ItemStyled done={task.done}>
           <div className={styles.checkboxContainer}>
             <input
               type="checkbox"
@@ -188,7 +187,7 @@ const App: React.FC = () => {
               checked={task.done}
               onChange={() => toggleTask(task.id)}
             />
-            <div className={styles.checkboxGif} onClick={() => toggleTask(task.id)} />
+            <div className={styles.checkboxGif} />
             <p style={{ color: '#ccc', textDecoration: task.done ? 'line-through' : 'initial' }}>
               {task.name}
             </p>
@@ -202,7 +201,6 @@ const App: React.FC = () => {
         </IconButton>
       </div>
     </ItemStyled>
-  ))}
 </section>
 
           </div>
