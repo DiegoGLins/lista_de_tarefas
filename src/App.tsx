@@ -8,14 +8,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import { v4 as uuidv4 } from 'uuid';
 
 
-
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { ItemType } from './types/ItemType';
 import { ItemStyled } from './components/ListItem/styles';
 import BasicModal from './components/Modal';
 import DialogConfirm from './components/DailogConfirm';
 import AlertStyled from './components/AlertStyled';
-import styles from './app.module.css';
+import styles from './app.module.scss';
 
 const API_BASE_URL = 'http://localhost:3000';
 
@@ -162,7 +161,6 @@ const App: React.FC = () => {
           <div className={styles.retroTitleContainer}>
           <h3 className={styles.retroTitle}>Adicionar Quest</h3>
           <input type="text"
-            placeholder='Adicione uma tarefa'
             value={inputText}
             onChange={e => setInputText(e.target.value)}
           />
@@ -180,26 +178,33 @@ const App: React.FC = () => {
 
         {filteredTasks.map(task => (
           <div key={task.id}>
-            <section>
-            <ItemStyled done={task.done}>
-              <input
-                type="checkbox"
-                checked={task.done}
-                onChange={() => toggleTask(task.id)}
-              />
-              <p style={{ color: '#ccc', textDecoration: task.done ? 'line-through' : 'initial' }}>
-                {task.name}
-              </p>
-              <div style={{ justifyContent: 'flex-end', paddingInlineStart: '80px' }}>
-                <IconButton onClick={() => openEditModal(task)} style={{ color: '#25d60e' }} edge="start" aria-label="delete">
-                  <EditIcon />
-                </IconButton>
-                <IconButton onClick={() => openDeleteTask(task)} style={{ color: '#e3f42a' }} edge="end" aria-label="delete">
-                  <DeleteIcon />
-                </IconButton>
-              </div>
-            </ItemStyled>
-            </section>
+      <section>
+      {tasks.map(task => (
+        <ItemStyled done={task.done} key={task.id}>
+          <div className={styles.checkboxContainer}>
+            <input
+              type="checkbox"
+              className={styles.checkboxInput}
+              checked={task.done}
+              onChange={() => toggleTask(task.id)}
+            />
+            <div className={styles.checkboxGif} onClick={() => toggleTask(task.id)} />
+            <p style={{ color: '#ccc', textDecoration: task.done ? 'line-through' : 'initial' }}>
+              {task.name}
+            </p>
+          </div>
+          <div style={{ justifyContent: 'flex-end', paddingInlineStart: '80px' }}>
+        <IconButton onClick={() => openEditModal(task)} style={{ color: '#25d60e' }} edge="start" aria-label="delete">
+          <EditIcon />
+        </IconButton>
+        <IconButton onClick={() => openDeleteTask(task)} style={{ color: '#e3f42a' }} edge="end" aria-label="delete">
+          <DeleteIcon />
+        </IconButton>
+      </div>
+    </ItemStyled>
+  ))}
+</section>
+
           </div>
         ))}
       </Component.Area>

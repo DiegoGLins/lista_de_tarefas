@@ -1,0 +1,72 @@
+
+
+@mixin step3v2($width, $color, $bgcolor) {
+  box-shadow:
+    $width 0 $bgcolor,
+    -$width 0 $bgcolor,
+    0 (-$width) $bgcolor,
+    0 $width $bgcolor,
+    2*$width 0 $bgcolor,
+    -2*$width 0 $bgcolor,
+    0 (-2*$width) $bgcolor,
+    0 2*$width $bgcolor, 
+    0 0 0 $width $bgcolor,
+    3*$width 0 $color,
+    -3*$width 0 $color, 
+    0 3*$width $color,
+    0 (-3*$width) $color,
+    0 (-$width) 0 $width $color,
+    0 $width 0 $width $color,
+    $width 0 0 $width $color,
+    -$width 0 0 $width $color;
+  margin: 3*$width auto;
+}
+
+.retroSection {
+  position: relative;
+  width: 100%;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #17181f;
+  @include step3v2(3px, red, white);
+}
+
+.retroTitleContainer {
+  position: absolute;
+  top: -35px; 
+  left: 10px;
+  max-width: 800px;
+  max-height: 50px;
+  background-color: #17181f;
+  padding: 5px 10px; 
+  z-index: 1;
+}
+
+.retroTitle {
+  color: #fff;
+  font-size: 18px;
+}
+
+/* styles.css */
+
+.checkboxContainer {
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.checkboxInput {
+  opacity: 0;
+  position: absolute;
+}
+
+.checkboxGif {
+  width: 20px;
+  height: 20px;
+  background-image: url('./assets/marioBox.gif');
+  background-size: contain;
+}
+
+.checkboxInput:checked ~ .checkboxGif {
+  background-image: url('./assets/marioCoin.gif');
+}
