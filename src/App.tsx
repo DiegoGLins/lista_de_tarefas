@@ -15,6 +15,7 @@ import { ItemStyled } from './components/ListItem/styles';
 import BasicModal from './components/Modal';
 import DialogConfirm from './components/DailogConfirm';
 import AlertStyled from './components/AlertStyled';
+import styles from './app.module.css';
 
 const API_BASE_URL = 'http://localhost:3000';
 
@@ -155,13 +156,18 @@ const App: React.FC = () => {
         <Component.Header>
           <h1>Daily Quests ⚔</h1>
         </Component.Header>
-        <section>
+        <section className={styles.retroSection}>
+        <div className={styles.retroBorder}></div>
         <Area>
+          <div className={styles.retroTitleContainer}>
+          <h3 className={styles.retroTitle}>Adicionar Quest</h3>
           <input type="text"
             placeholder='Adicione uma tarefa'
             value={inputText}
             onChange={e => setInputText(e.target.value)}
           />
+          
+          </div>
           <button onClick={() => addTask(inputText)}>Adicionar Tarefa</button>
         </Area>
         </section>
