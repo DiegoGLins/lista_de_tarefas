@@ -153,7 +153,7 @@ const App: React.FC = () => {
 
       <Component.Area>
         <Component.Header>
-          Daily Quests ⚔
+          <h1>Daily Quests ⚔</h1>
         </Component.Header>
         <section>
         <Area>
