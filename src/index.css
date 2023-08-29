@@ -1,11 +1,25 @@
+@font-face {
+  font-family: "Pokemon GB";
+  src: url("./assets/fonts/Pokemon GB.woff") format("woff");
+  src: url("./assets/fonts/Pokemon GB.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Press Start 2P";
+  src: url("./assets/fonts/PressStart2P-Regular.woff") format("woff");
+  src: url("./assets/fonts/PressStart2P-Regular.ttf") format("truetype");
+}
+
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Pokemon GB;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424;
+  box-sizing: border-box;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -14,57 +28,161 @@
   -webkit-text-size-adjust: 100%;
 }
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-
-a:hover {
-  color: #535bf2;
-}
-
 body {
-  margin: 0;
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 24px;
+  text-align: center;
+  text-indent: 0px;
+  text-transform: none;
+  vertical-align: middle;
+  white-space: normal;
+  word-spacing: 0px;
+
+
+  /* Box */
+  margin: 0px;
+  max-height: none;
+  min-height: 0px;
+  max-width: none;
+  min-width: 0px;
+  /* Positioning */
+  position: relative;
+  top: 0px;
+  bottom: 0px;
+  /* Table */
+  border-collapse: separate;
+  border-spacing: 0px 0px;
+  caption-side: top;
+  empty-cells: show;
+  table-layout: auto;
+  /* Effects */
+  transform: none;
+  transition: all 0s ease 0s;
+  outline-offset: 0px;
+  box-sizing: border-box;
+  resize: none;
+  text-shadow: none;
+  text-overflow: clip;
+  word-wrap: normal;
+  box-shadow: rgba(0, 107, 179, 0.3) 0px 0px 0px 6px;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
+}
+
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
 }
 
 h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+  font-size: 60px;
+  font-weight: 700;
+  line-height: 48px;
+  text-decoration: none solid rgb(33, 37, 41);
+  word-spacing: 0px;
+  margin: 0 0 8px 0;
+  display: block;
+  transform: none;
+  transition: all 0s ease 0s;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
+button, .button {
+  position: relative;
+  font-family: "Pokemon GB";
   font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+  background: none;
+  border: none;
+  color: #e75a10;
+  padding: 0 0 0 1em;
+  text-transform: uppercase;
+  text-align: left;
   cursor: pointer;
-  transition: border-color 0.25s;
 }
 
-button:hover {
-  border-color: #646cff;
+button:hover::before, .button:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -2px;
+  width: 2px;
+  height: 2px;
+  font-size: 2px;
+  color: #181010;
+  box-shadow: 1em 0em 0 #e75a10, 2em 0em 0 #e75a10, 1em 1em 0 #e75a10, 2em 1em 0 #e75a10, 3em 1em 0 #e75a10, 1em 2em 0 #e75a10, 2em 2em 0 #e75a10, 3em 2em 0 #e75a10, 4em 2em 0 #e75a10, 1em 3em 0 #e75a10, 2em 3em 0 #e75a10, 3em 3em 0 #e75a10, 4em 3em 0 #e75a10, 5em 3em 0 #e75a10, 1em 4em 0 #e75a10, 2em 4em 0 #e75a10, 3em 4em 0 #e75a10, 4em 4em 0 #e75a10, 1em 5em 0 #e75a10, 2em 5em 0 #e75a10, 3em 5em 0 #e75a10, 1em 6em 0 #e75a10, 2em 6em 0 #e75a10;
 }
 
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+
+div {
+  transform: none;
+  transition: all 0s ease 0s;
+  box-sizing: border-box;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
+section {
+  /* Font & Text */
+  font-size: 16px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  letter-spacing: normal;
+  line-height: 24px;
+  text-decoration: none solid rgb(33, 37, 41);
+  text-align: left;
+  text-indent: 0px;
+  text-transform: none;
+  vertical-align: baseline;
+  white-space: normal;
+  word-spacing: 0px;
 
-  a:hover {
-    color: #747bff;
-  }
+  /* Color & Background */
+  background-attachment: scroll;
+  background-color: rgba(234, 224, 224, 0);
+  background-image: none;
+  background-position: 0% 0%;
+  background-repeat: repeat;
+  color: rgb(33, 37, 41);
 
-  button {
-    background-color: #f9f9f9;
-  }
+  /* Box */
+  height: 91.2031px;
+  width: 980px;
+  justify-content: center;
+  margin: 0px;
+  padding: 24px 32px 40px;
+  max-height: none;
+  min-height: 0px;
+  max-width: none;
+  min-width: 0px;
+
+  /* Positioning */
+  position: relative;
+  top: 0px;
+  caption-side: top;
+  empty-cells: show;
+  table-layout: auto;
+
+  /* Miscellaneous */
+  overflow: visible;
+  visibility: visible;
+
+  /* Effects */
+  transform: none;
+  transition: all 0s ease 0s;
+  outline-offset: 0px;
+  box-sizing: border-box;
+  resize: none;
+  text-shadow: none;
+  text-overflow: clip;
+  word-wrap: normal;
+  box-shadow: none;
+  border-top-left-radius: 0px;
+  border-top-right-radius: 0px;
+  border-bottom-left-radius: 0px;
+  border-bottom-right-radius: 0px;
 }
