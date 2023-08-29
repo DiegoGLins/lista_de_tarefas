@@ -1,4 +1,5 @@
 /* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable no-mixed-spaces-and-tabs */
 
 import * as Component from './App.styles'
 import { Area } from './components/Area'
@@ -15,7 +16,9 @@ import { ItemStyled } from './components/ListItem/styles';
 import BasicModal from './components/Modal';
 import DialogConfirm from './components/DailogConfirm';
 import AlertStyled from './components/AlertStyled';
+
 import styles from './app.module.scss';
+
 
 const API_BASE_URL = 'http://localhost:3000';
 
@@ -44,13 +47,13 @@ const App: React.FC = () => {
     fetchTasks();
   }, [fetchTasks]);
 
+
   const addTask = useCallback((name: string) => {
     const newTask: ItemType = {
       id: uuidv4(),
       name,
       done: false,
     };
-
 
 
     fetch(`${API_BASE_URL}/tasks`, {
@@ -116,6 +119,7 @@ const App: React.FC = () => {
     }
   }, [tasks, filter]);
 
+
   const toggleTask = useCallback((taskId: string) => {
     setTasks(prevTasks =>
       prevTasks.map(task =>
@@ -156,6 +160,7 @@ const App: React.FC = () => {
 
       <Component.Area>
         <Component.Header>
+
           <h1>Daily Quests ⚔</h1>
         </Component.Header>
         <section className={styles.retroSection}>
@@ -201,7 +206,7 @@ const App: React.FC = () => {
                     <img src={featherImage} alt="Delete" style={{ color: '#fff', maxWidth: '32px' }} />
                   </IconButton>
                   <IconButton onClick={() => openDeleteTask(task)} edge="end" aria-label="delete">
-                    <img src={trashCanImage} alt="Delete" style={{ color: '#fff', maxWidth: '40px' }} />
+                    <img src={trashCanImage} alt="Delete" style={{ color: '#fff', maxWidth: '32px' }} />
                   </IconButton>
                 </div>
               </ItemStyled>
