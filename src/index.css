@@ -15,10 +15,8 @@
   font-family: Press Start 2P;
   line-height: 1.5;
   font-weight: 400;
-
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
   box-sizing: border-box;
 
   font-synthesis: none;
@@ -41,6 +39,12 @@ body {
   vertical-align: middle;
   white-space: normal;
   word-spacing: 0px;
+
+  background-image: url('./assets/Background.gif');
+  background-size: 100% 100%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
 
 
   /* Box */
@@ -103,6 +107,7 @@ button, .button {
   padding: 0 0 0 1em;
   text-transform: uppercase;
   text-align: left;
+  text-shadow: -2px -2px 0 rgb(255, 255, 255), 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
   cursor: pointer;
 }
 
