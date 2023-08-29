@@ -32,7 +32,7 @@ const App: React.FC = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState<boolean>(false)
   const [openAlert, setOpenAlert] = useState<boolean>(false)
 
-  
+
   const fetchTasks = useCallback(() => {
     fetch(`${API_BASE_URL}/tasks`)
       .then(response => response.json())
@@ -202,12 +202,8 @@ const App: React.FC = () => {
           <Area>
 
             <div className={styles.retroTitleContainer}>
-              <p className={styles.retroTitleInput}>Adicionar Quest</p>
-              <input style={{ fontFamily: 'Pokemon GB', justifyContent: 'center', alignItems: 'center' }} type="text"
-
-            <div className={styles.retroTitleContainer }>
               <h3 className={styles.retroTitle}>Adicionar Quest</h3>
-              <input style={{ fontFamily: 'Pokemon GB', justifyContent: 'center', alignItems: 'center', height: '80px'}} type="text"
+              <input style={{ fontFamily: 'Pokemon GB', justifyContent: 'center', alignItems: 'center', height: '80px' }} type="text"
                 value={inputText}
                 onChange={e => setInputText(e.target.value)}
               />
