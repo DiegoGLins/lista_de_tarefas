@@ -1,0 +1,61 @@
+.typingEffect {
+    font-family: 'Press Start 2P', cursive;
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: .15em solid #fff; /* Simula o cursor de digitação */
+    animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
+}
+
+@keyframes typing {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+@keyframes blink-caret {
+    from, to { border-color: transparent; }
+    50% { border-color: #fff; }
+}
+
+
+.modalContainer {
+    background-color: #333;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.modalTitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.modalMessage {
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+button, .button {
+    position: relative;
+    font-family: "Pokemon GB";
+    font-size: 1em;
+    background: none;
+    border: none;
+    color: #e75a10;
+    padding: 0 0 0 1em;
+    text-transform: uppercase;
+    text-align: left;
+    cursor: pointer;
+  }
+  
+  button:hover::before, .button:hover::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -2px;
+    width: 2px;
+    height: 2px;
+    font-size: 2px;
+    color: #181010;
+    box-shadow: 1em 0em 0 #e75a10, 2em 0em 0 #e75a10, 1em 1em 0 #e75a10, 2em 1em 0 #e75a10, 3em 1em 0 #e75a10, 1em 2em 0 #e75a10, 2em 2em 0 #e75a10, 3em 2em 0 #e75a10, 4em 2em 0 #e75a10, 1em 3em 0 #e75a10, 2em 3em 0 #e75a10, 3em 3em 0 #e75a10, 4em 3em 0 #e75a10, 5em 3em 0 #e75a10, 1em 4em 0 #e75a10, 2em 4em 0 #e75a10, 3em 4em 0 #e75a10, 4em 4em 0 #e75a10, 1em 5em 0 #e75a10, 2em 5em 0 #e75a10, 3em 5em 0 #e75a10, 1em 6em 0 #e75a10, 2em 6em 0 #e75a10;
+  }
