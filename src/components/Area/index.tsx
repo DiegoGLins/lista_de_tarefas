@@ -9,7 +9,9 @@ export const Area: React.FC<AreaProps> = ({ children }) => {
 
     return (
         <A.AreaStyled>
-            <div className='image'>{'\u2795'}</div>
+            <div className='image'>
+                <img src='./src/assets/Mario-gif.gif' alt='Mario' style={{ maxWidth: '110px', paddingTop: '8px' }} />
+            </div>
             {children}
         </A.AreaStyled>
     )
