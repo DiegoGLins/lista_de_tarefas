@@ -13,7 +13,6 @@
   position: relative;
   width: 100%;
   margin: 50px auto;
-  padding: 60px;
   padding: 20px;
   background-color: #17181f;
   @include step3v2(3px, #e75a10, white);
@@ -35,6 +34,19 @@
   top: -25px;
   color: #fff;
   font-size: 22px;
+  font-size: 12px;
+}
+
+#retroRender {
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+}
+
+.retroTitleInput {
+  color: #fff;
+  font-size: 22px;
+  margin-top: 13px;
 }
 
 .retroBotton {
@@ -49,6 +61,8 @@
   position: relative;
   cursor: pointer;
   user-select: none;
+  display: flex;
+  flex-direction: row;
 }
 
 .checkboxInput {
@@ -57,10 +71,12 @@
 }
 
 .checkboxGif {
+  padding-right: 20px;
   width: 20px;
   height: 20px;
   margin-left: 10px;
-  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
   background-image: url("./assets/marioBox.gif");
   background-size: contain;
 }
