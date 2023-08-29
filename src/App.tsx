@@ -1,11 +1,12 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 
 import * as Component from './App.styles'
 import { Area } from './components/Area'
 import ButtonDefault from './components/Button/ButtonDefault';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { Alert, Button, IconButton, Snackbar, TextField } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
 import { v4 as uuidv4 } from 'uuid';
+import trashCanImage from './assets/trashCan.png';
+import featherImage from './assets/Feather.png';
 
 
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
@@ -194,11 +195,12 @@ const App: React.FC = () => {
           </div>
           <div style={{ justifyContent: 'flex-end', paddingInlineStart: '80px' }}>
         <IconButton onClick={() => openEditModal(task)} style={{ color: '#25d60e' }} edge="start" aria-label="delete">
-          <EditIcon />
+				<img src={featherImage} alt="Delete" style={{ color: '#fff', maxWidth: '32px'}} />
         </IconButton>
-        <IconButton onClick={() => openDeleteTask(task)} style={{ color: '#e3f42a' }} edge="end" aria-label="delete">
-          <DeleteIcon />
-        </IconButton>
+				<IconButton onClick={() => openDeleteTask(task)} edge="end" aria-label="delete">
+  				<img src={trashCanImage} alt="Delete" style={{ color: '#fff', maxWidth: '40px'}} />
+				</IconButton>
+
       </div>
     </ItemStyled>
 </section>
