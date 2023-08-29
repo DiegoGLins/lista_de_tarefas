@@ -1,4 +1,4 @@
-/* eslint-disable no-mixed-spaces-and-tabs */
+/* eslint-disable prefer-const */
 /* eslint-disable no-mixed-spaces-and-tabs */
 
 import * as Component from './App.styles'
@@ -16,9 +16,7 @@ import { ItemStyled } from './components/ListItem/styles';
 import BasicModal from './components/Modal';
 import DialogConfirm from './components/DailogConfirm';
 import AlertStyled from './components/AlertStyled';
-
 import styles from './app.module.scss';
-
 
 const API_BASE_URL = 'http://localhost:3000';
 
@@ -48,12 +46,20 @@ const App: React.FC = () => {
   }, [fetchTasks]);
 
 
+  const dataCreated = new Date()
+  const day = dataCreated.getDate().toString().padStart(2, '0')
+  const month = String(dataCreated.getMonth() + 1).padStart(2, '0');
+  const year = dataCreated.getFullYear()
+
   const addTask = useCallback((name: string) => {
+
+
     const newTask: ItemType = {
       id: uuidv4(),
       name,
       done: false,
-    };
+      createdAt: `${day}/${month}/${year}`
+    }
 
 
     fetch(`${API_BASE_URL}/tasks`, {
@@ -112,12 +118,51 @@ const App: React.FC = () => {
   const filteredTasks = useMemo(() => {
     if (filter === 'done') {
       return tasks.filter(task => task.done);
+
     } else if (filter === 'Pendentes') {
       return tasks.filter(task => !task.done);
     } else {
       return tasks;
     }
   }, [tasks, filter]);
+
+
+  const order = (orderBy: string) => {
+    const orderTasks = [...tasks];
+
+    switch (orderBy) {
+      case 'name':
+        orderTasks.sort((a, b) => a.name.localeCompare(b.name));
+        break;
+      case 'creationDate':
+        orderTasks.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+        break;
+      case 'status':
+        orderTasks.sort((a, b) => a.done === b.done ? 0 : a.done ? 1 : -1);
+        break;
+      default:
+        break;
+    }
+
+    setTasks(orderTasks);
+  };
+
+
+
+  // const order = () => {
+  //   const orderTasks = [...tasks];
+
+  //   orderTasks.sort((a, b) => {
+  //     let x = a.name.toUpperCase()
+  //     let b = b.name.toUpperCase()
+
+
+  //   })
+
+  //  ;
+
+  //   setTasks(orderTasks);
+  // };
 
 
   const toggleTask = useCallback((taskId: string) => {
@@ -168,7 +213,7 @@ const App: React.FC = () => {
           </div>
           <Area>
             <div className={styles.retroTitleContainer}>
-              <h3 className={styles.retroTitle}>Adicionar Quest</h3>
+              <p className={styles.retroTitleInput}>Adicionar Quest</p>
               <input style={{ fontFamily: 'Pokemon GB', justifyContent: 'center', alignItems: 'center' }} type="text"
                 value={inputText}
                 onChange={e => setInputText(e.target.value)}
@@ -177,12 +222,16 @@ const App: React.FC = () => {
           </Area>
         </section>
 
-        <div style={{ marginTop: '50px', display: 'flex', justifyContent: 'center', gap: '15px' }}>
+        <div style={{ marginTop: '50px', display: 'flex', justifyContent: 'center', gap: '30px' }}>
           <ButtonDefault actionConfirm={() => setFilter('Todas')} title={'Todas'} />
           <ButtonDefault actionConfirm={() => setFilter('Pendentes')} title={'Pendentes'} />
           <ButtonDefault actionConfirm={() => setFilter('done')} title={'Concluídas'} />
         </div>
-
+        <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '30px' }} className={styles.retroTitle}>
+          <ButtonDefault actionConfirm={() => order('name')} title={'Ordenar por nome'} />
+          <ButtonDefault actionConfirm={() => order('creationDate')} title={'Ordenar por data de criacao'} />
+          <ButtonDefault actionConfirm={() => order('status')} title={'Ordenar por status'} />
+        </div>
         {filteredTasks.map(task => (
           <div key={task.id}>
             <section>
@@ -195,9 +244,15 @@ const App: React.FC = () => {
                     onChange={() => toggleTask(task.id)}
                   />
                   <div className={styles.checkboxGif}>
-                    <p style={{ marginLeft: '30px', color: '#ccc', textDecoration: task.done ? 'line-through' : 'initial' }}>
-                      {task.name}
-                    </p>
+                    <div style={{ gap: '5px', display: 'flex', marginLeft: '35px', color: '#ccc', textDecoration: task.done ? 'line-through' : 'initial' }}>
+                      <span>{task.name} </span>
+                      <span>{`-`}</span>
+                      <span id='retroRender'>{day}</span>
+                      <span>{`/`}</span>
+                      <span id='retroRender'>{month}</span>
+                      <span>{`/`}</span>
+                      <span id='retroRender'>{year}</span>
+                    </div>
                   </div>
                 </div>
                 <div style={{ marginLeft: '30px', justifyContent: 'end', paddingInlineStart: '710px' }}>
@@ -215,7 +270,7 @@ const App: React.FC = () => {
       </Component.Area>
 
       <AlertStyled>
-        <Snackbar open={openAlert} autoHideDuration={1800} onClose={() => setOpenAlert(false)}>
+        <Snackbar open={openAlert} autoHideDuration={1600} onClose={() => setOpenAlert(false)}>
           <Alert onClose={() => setOpenAlert(false)} severity="success">
             Tarefa excluída com sucesso !
           </Alert>
