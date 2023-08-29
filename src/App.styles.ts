@@ -14,7 +14,7 @@ padding: 10px;
 
 export const Header = styled.h1`
 margin: 0;
-padding: 0;
+padding: 40px 0px 0px;
 color: #fff;
 text-align: center;
 border-bottom: 1px solid #444;
