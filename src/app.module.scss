@@ -31,10 +31,9 @@
 
 .retroTitle {
   position: relative;
-  top: -25px;
+  top: -29px;
   color: #fff;
   font-size: 22px;
-  font-size: 12px;
 }
 
 #retroRender {
@@ -56,7 +55,12 @@
   align-items: center;
   padding: 15px 0px 0px 0px;
 }
-
+.input{
+  position: relative;
+  top: -56px;
+  color: #fff;
+  justify-content: start;
+}
 .checkboxContainer {
   position: relative;
   cursor: pointer;

@@ -203,7 +203,7 @@ const App: React.FC = () => {
 
             <div className={styles.retroTitleContainer}>
               <h3 className={styles.retroTitle}>Adicionar Quest</h3>
-              <input style={{ fontFamily: 'Pokemon GB', justifyContent: 'center', alignItems: 'center', height: '80px' }} type="text"
+              <input className={styles.input} style={{ fontFamily: 'Pokemon GB', justifyContent: 'center', alignItems: 'center', height: '80px' }} type="text"
                 value={inputText}
                 onChange={e => setInputText(e.target.value)}
               />
@@ -211,12 +211,12 @@ const App: React.FC = () => {
           </Area>
         </section>
 
-        <div style={{ marginTop: '50px', display: 'flex', justifyContent: 'center', gap: '30px' }}>
+        <div style={{ marginTop: '50px', fontSize: '21px', display: 'flex', justifyContent: 'center', gap: '30px' }}>
           <ButtonDefault actionConfirm={() => setFilter('Todas')} title={'Todas'} />
           <ButtonDefault actionConfirm={() => setFilter('Pendentes')} title={'Pendentes'} />
           <ButtonDefault actionConfirm={() => setFilter('done')} title={'Concluídas'} />
         </div>
-        <div style={{ marginTop: '20px', display: 'flex', justifyContent: 'center', gap: '30px' }} className={styles.retroTitle}>
+        <div style={{ marginTop: '80px', fontSize: '14px', display: 'flex', justifyContent: 'center', gap: '30px' }} className={styles.retroTitle}>
           <ButtonDefault actionConfirm={() => order('name')} title={'Ordenar por nome'} />
           <ButtonDefault actionConfirm={() => order('creationDate')} title={'Ordenar por data de criacao'} />
           <ButtonDefault actionConfirm={() => order('status')} title={'Ordenar por status'} />

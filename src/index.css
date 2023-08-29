@@ -108,7 +108,7 @@ button, .button {
   padding: 0 0 0 1em;
   text-transform: uppercase;
   text-align: left;
-  text-shadow: -2px -2px 0 rgb(255, 255, 255), 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black;
+  text-shadow: -1px -1px 0 rgb(255, 255, 255), 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
   cursor: pointer;
 }
 
