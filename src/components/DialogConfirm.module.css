@@ -2,7 +2,7 @@
     font-family: 'Press Start 2P', cursive;
     white-space: nowrap;
     overflow: hidden;
-    border-right: .15em solid #fff; /* Simula o cursor de digitação */
+    border-right: .15em solid #fff;
     animation: typing 4s steps(40, end), blink-caret .75s step-end infinite;
 }
 

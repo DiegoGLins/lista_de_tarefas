@@ -169,9 +169,9 @@ const App: React.FC = () => {
             <button onClick={() => addTask(inputText)}>Adicionar Tarefa</button>
           </div>
           <Area>
-            <div className={styles.retroTitleContainer}>
+            <div className={styles.retroTitleContainer }>
               <h3 className={styles.retroTitle}>Adicionar Quest</h3>
-              <input style={{ fontFamily: 'Pokemon GB', justifyContent: 'center', alignItems: 'center' }} type="text"
+              <input style={{ fontFamily: 'Pokemon GB', justifyContent: 'center', alignItems: 'center', height: '80px'}} type="text"
                 value={inputText}
                 onChange={e => setInputText(e.target.value)}
               />
