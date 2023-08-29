@@ -34,6 +34,7 @@ const App: React.FC = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState<boolean>(false)
   const [openAlert, setOpenAlert] = useState<boolean>(false)
 
+  
   const fetchTasks = useCallback(() => {
     fetch(`${API_BASE_URL}/tasks`)
       .then(response => response.json())
@@ -120,6 +121,7 @@ const App: React.FC = () => {
   }, [tasks, filter]);
 
 
+  
   const toggleTask = useCallback((taskId: string) => {
     setTasks(prevTasks =>
       prevTasks.map(task =>
@@ -160,7 +162,7 @@ const App: React.FC = () => {
 
       <Component.Area>
         <Component.Header>
-          <h1>Missão ⚔</h1>
+          <h1>Daily Quests ⚔</h1>
         </Component.Header>
         <section className={styles.retroSection}>
           <div className={styles.retroBotton}>
@@ -217,7 +219,7 @@ const App: React.FC = () => {
       <AlertStyled>
         <Snackbar open={openAlert} autoHideDuration={1800} onClose={() => setOpenAlert(false)}>
           <Alert onClose={() => setOpenAlert(false)} severity="success">
-            Tarefa excluída com sucesso !
+            Tarefa excluída com sucesso!
           </Alert>
         </Snackbar>
       </AlertStyled>
