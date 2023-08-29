@@ -1,10 +1,12 @@
+/* eslint-disable no-mixed-spaces-and-tabs */
 
 import * as Component from './App.styles'
 import { Area } from './components/Area'
 import ButtonDefault from './components/Button/ButtonDefault';
-import DeleteIcon from '@mui/icons-material/Delete';
 import { Alert, Button, IconButton, Snackbar, TextField } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
+import { v4 as uuidv4 } from 'uuid';
+import trashCanImage from './assets/trashCan.png';
+import featherImage from './assets/Feather.png';
 
 
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
@@ -13,8 +15,9 @@ import { ItemStyled } from './components/ListItem/styles';
 import BasicModal from './components/Modal';
 import DialogConfirm from './components/DailogConfirm';
 import AlertStyled from './components/AlertStyled';
+import styles from './app.module.scss';
 
-
+const API_BASE_URL = 'http://localhost:3000';
 
 const App: React.FC = () => {
   const [tasks, setTasks] = useState<ItemType[]>([]);
@@ -28,15 +31,42 @@ const App: React.FC = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState<boolean>(false)
   const [openAlert, setOpenAlert] = useState<boolean>(false)
 
+  const fetchTasks = useCallback(() => {
+    fetch(`${API_BASE_URL}/tasks`)
+      .then(response => response.json())
+      .then(data => setTasks(data))
+      .catch(error => {
+        console.error('Erro ao buscar tarefas:', error);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetchTasks();
+  }, [fetchTasks]);
+
   const addTask = useCallback((name: string) => {
     const newTask: ItemType = {
-      id: tasks.length + 1,
+      id: uuidv4(),
       name,
       done: false,
     };
+
+
+
+    fetch(`${API_BASE_URL}/tasks`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', },
+      body: JSON.stringify(newTask),
+    }).then(response => {
+      if (response.ok) {
+        console.log('Tarefa adicionada com sucesso')
+      }
+    });
     setTasks(prevTasks => [...prevTasks, newTask]);
-    setInputText('')
-  }, [tasks]);
+    setInputText('');
+  }, [])
+
+
 
   const editListTask = () => {
     const editListTask = [...tasks];
@@ -44,22 +74,37 @@ const App: React.FC = () => {
 
     editListTask[index].name = taskModal;
     if (taskModal.length < 5) {
-      return alert('Por favor digite uma descrição com no mínio 5 caractéres')
+      return alert('Por favor digite uma descrição com no mínimo 5 caractéres')
     }
-    setTasks(editListTask);
-    setEditModal(false);
-  }
+    fetch(`${API_BASE_URL}/tasks/${editTask?.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ name: taskModal }),
+    }).then(response => {
+      if (response.ok) {
+        setTasks(editListTask);
+        setEditModal(false);
+      }
+    });
+  };
 
   const deleteListTask = () => {
     const index = tasks.findIndex(item => item.id === taskDelete?.id);
     const deleteTask = [...tasks];
-    deleteTask.splice(index, 1)
+    deleteTask.splice(index, 1);
 
-    setTasks(deleteTask);
-    setOpenDeleteDialog(false);
-    handleCloseAlert()
-
-  }
+    fetch(`${API_BASE_URL}/tasks/${taskDelete?.id}`, {
+      method: 'DELETE',
+    }).then(response => {
+      if (response.ok) {
+        setTasks(deleteTask);
+        setOpenDeleteDialog(false);
+        handleCloseAlert();
+      }
+    });
+  };
 
   const filteredTasks = useMemo(() => {
     if (filter === 'done') {
@@ -71,7 +116,7 @@ const App: React.FC = () => {
     }
   }, [tasks, filter]);
 
-  const toggleTask = useCallback((taskId: number) => {
+  const toggleTask = useCallback((taskId: string) => {
     setTasks(prevTasks =>
       prevTasks.map(task =>
         task.id === taskId ? { ...task, done: !task.done } : task
@@ -111,18 +156,24 @@ const App: React.FC = () => {
 
       <Component.Area>
         <Component.Header>
-          Lista de Tarefas
+          <h1>Daily Quests ⚔</h1>
         </Component.Header>
-        <Area>
-          <input type="text"
-            placeholder='Adicione uma tarefa'
-            value={inputText}
-            onChange={e => setInputText(e.target.value)}
-          />
-          <button onClick={() => addTask(inputText)}>Adicionar Tarefa</button>
-        </Area>
+        <section className={styles.retroSection}>
+          <div className={styles.retroBotton}>
+            <button onClick={() => addTask(inputText)}>Adicionar Tarefa</button>
+          </div>
+          <Area>
+            <div className={styles.retroTitleContainer}>
+              <h3 className={styles.retroTitle}>Adicionar Quest</h3>
+              <input style={{ fontFamily: 'Pokemon GB', justifyContent: 'center', alignItems: 'center' }} type="text"
+                value={inputText}
+                onChange={e => setInputText(e.target.value)}
+              />
+            </div>
+          </Area>
+        </section>
 
-        <div style={{ display: 'flex', justifyContent: 'center', gap: '15px' }}>
+        <div style={{ marginTop: '50px', display: 'flex', justifyContent: 'center', gap: '15px' }}>
           <ButtonDefault actionConfirm={() => setFilter('Todas')} title={'Todas'} />
           <ButtonDefault actionConfirm={() => setFilter('Pendentes')} title={'Pendentes'} />
           <ButtonDefault actionConfirm={() => setFilter('done')} title={'Concluídas'} />
@@ -130,24 +181,31 @@ const App: React.FC = () => {
 
         {filteredTasks.map(task => (
           <div key={task.id}>
-            <ItemStyled done={task.done}>
-              <input
-                type="checkbox"
-                checked={task.done}
-                onChange={() => toggleTask(task.id)}
-              />
-              <p style={{ color: '#ccc', textDecoration: task.done ? 'line-through' : 'initial' }}>
-                {task.name}
-              </p>
-              <div style={{ justifyContent: 'flex-end', paddingInlineStart: '80px' }}>
-                <IconButton onClick={() => openEditModal(task)} style={{ color: '#25d60e' }} edge="start" aria-label="delete">
-                  <EditIcon />
-                </IconButton>
-                <IconButton onClick={() => openDeleteTask(task)} style={{ color: '#e3f42a' }} edge="end" aria-label="delete">
-                  <DeleteIcon />
-                </IconButton>
-              </div>
-            </ItemStyled>
+            <section>
+              <ItemStyled done={task.done}>
+                <div className={styles.checkboxContainer}>
+                  <input
+                    type="checkbox"
+                    className={styles.checkboxInput}
+                    checked={task.done}
+                    onChange={() => toggleTask(task.id)}
+                  />
+                  <div className={styles.checkboxGif}>
+                    <p style={{ marginLeft: '30px', color: '#ccc', textDecoration: task.done ? 'line-through' : 'initial' }}>
+                      {task.name}
+                    </p>
+                  </div>
+                </div>
+                <div style={{ marginLeft: '30px', justifyContent: 'end', paddingInlineStart: '710px' }}>
+                  <IconButton onClick={() => openEditModal(task)} style={{ color: '#25d60e' }} edge="start" aria-label="delete">
+                    <img src={featherImage} alt="Delete" style={{ color: '#fff', maxWidth: '32px' }} />
+                  </IconButton>
+                  <IconButton onClick={() => openDeleteTask(task)} edge="end" aria-label="delete">
+                    <img src={trashCanImage} alt="Delete" style={{ color: '#fff', maxWidth: '40px' }} />
+                  </IconButton>
+                </div>
+              </ItemStyled>
+            </section>
           </div>
         ))}
       </Component.Area>
