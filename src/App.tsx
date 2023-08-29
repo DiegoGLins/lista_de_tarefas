@@ -32,6 +32,7 @@ const App: React.FC = () => {
   const [openDeleteDialog, setOpenDeleteDialog] = useState<boolean>(false)
   const [openAlert, setOpenAlert] = useState<boolean>(false)
 
+  
   const fetchTasks = useCallback(() => {
     fetch(`${API_BASE_URL}/tasks`)
       .then(response => response.json())
@@ -192,16 +193,21 @@ const App: React.FC = () => {
 
       <Component.Area>
         <Component.Header>
-          <h1>Missão ⚔</h1>
+          <h1>Daily Quests ⚔</h1>
         </Component.Header>
         <section className={styles.retroSection}>
           <div className={styles.retroBotton}>
             <button onClick={() => addTask(inputText)}>Adicionar Tarefa</button>
           </div>
           <Area>
+
             <div className={styles.retroTitleContainer}>
               <p className={styles.retroTitleInput}>Adicionar Quest</p>
               <input style={{ fontFamily: 'Pokemon GB', justifyContent: 'center', alignItems: 'center' }} type="text"
+
+            <div className={styles.retroTitleContainer }>
+              <h3 className={styles.retroTitle}>Adicionar Quest</h3>
+              <input style={{ fontFamily: 'Pokemon GB', justifyContent: 'center', alignItems: 'center', height: '80px'}} type="text"
                 value={inputText}
                 onChange={e => setInputText(e.target.value)}
               />
@@ -259,7 +265,7 @@ const App: React.FC = () => {
       <AlertStyled>
         <Snackbar open={openAlert} autoHideDuration={1600} onClose={() => setOpenAlert(false)}>
           <Alert onClose={() => setOpenAlert(false)} severity="success">
-            Tarefa excluída com sucesso !
+            Tarefa excluída com sucesso!
           </Alert>
         </Snackbar>
       </AlertStyled>
