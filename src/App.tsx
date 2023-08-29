@@ -160,8 +160,7 @@ const App: React.FC = () => {
 
       <Component.Area>
         <Component.Header>
-
-          <h1>Daily Quests ⚔</h1>
+          <h1>Missão ⚔</h1>
         </Component.Header>
         <section className={styles.retroSection}>
           <div className={styles.retroBotton}>
