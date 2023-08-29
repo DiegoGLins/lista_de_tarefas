@@ -53,12 +53,15 @@ const App: React.FC = () => {
 
   const addTask = useCallback((name: string) => {
 
-
     const newTask: ItemType = {
       id: uuidv4(),
       name,
       done: false,
-      createdAt: `${day}/${month}/${year}`
+      createdAt: {
+        dia: `${day}`,
+        mes: `${month}`,
+        ano: `${year}`
+      }
     }
 
 
@@ -73,7 +76,7 @@ const App: React.FC = () => {
     });
     setTasks(prevTasks => [...prevTasks, newTask]);
     setInputText('');
-  }, [])
+  }, [day, month, year])
 
 
 
@@ -135,7 +138,7 @@ const App: React.FC = () => {
         orderTasks.sort((a, b) => a.name.localeCompare(b.name));
         break;
       case 'creationDate':
-        orderTasks.sort((a, b) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+        orderTasks.sort((a, b) => new Date(a.createdAt.dia).getTime() && new Date(a.createdAt.mes).getTime() && new Date(a.createdAt.ano).getTime() - new Date(b.createdAt.dia).getTime() && new Date(b.createdAt.mes).getTime() && new Date(b.createdAt.ano).getTime());
         break;
       case 'status':
         orderTasks.sort((a, b) => a.done === b.done ? 0 : a.done ? 1 : -1);
@@ -147,22 +150,6 @@ const App: React.FC = () => {
     setTasks(orderTasks);
   };
 
-
-
-  // const order = () => {
-  //   const orderTasks = [...tasks];
-
-  //   orderTasks.sort((a, b) => {
-  //     let x = a.name.toUpperCase()
-  //     let b = b.name.toUpperCase()
-
-
-  //   })
-
-  //  ;
-
-  //   setTasks(orderTasks);
-  // };
 
 
   const toggleTask = useCallback((taskId: string) => {
@@ -247,11 +234,11 @@ const App: React.FC = () => {
                     <div style={{ gap: '5px', display: 'flex', marginLeft: '35px', color: '#ccc', textDecoration: task.done ? 'line-through' : 'initial' }}>
                       <span>{task.name} </span>
                       <span>{`-`}</span>
-                      <span id='retroRender'>{day}</span>
+                      <span id='retroRender'>{task.createdAt.dia}</span>
                       <span>{`/`}</span>
-                      <span id='retroRender'>{month}</span>
+                      <span id='retroRender'>{task.createdAt.mes}</span>
                       <span>{`/`}</span>
-                      <span id='retroRender'>{year}</span>
+                      <span id='retroRender'>{task.createdAt.ano}</span>
                     </div>
                   </div>
                 </div>
