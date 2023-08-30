@@ -24,6 +24,9 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --retro-cursor: url("./assets/retroCursor.png"), auto;
+  --retro-pointer-cursor: url("./assets/retroPointerCursor.png"), pointer;
 }
 
 body {
@@ -40,12 +43,13 @@ body {
   white-space: normal;
   word-spacing: 0px;
 
+  /*Background & Pointer*/
   background-image: url('./assets/Background.gif');
   background-size: 100% 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-
+  cursor: var(--retro-cursor);
 
   /* Box */
   margin: 0px;
@@ -109,7 +113,8 @@ button, .button {
   text-transform: uppercase;
   text-align: left;
   text-shadow: -1px -1px 0 rgb(255, 255, 255), 1px -1px 0 black, -1px 1px 0 black, 1px 1px 0 black;
-  cursor: pointer;
+  cursor: url("./assets/retroPointerCursor.png"), pointer;
+
 }
 
 button:hover::before, .button:hover::before {
