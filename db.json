@@ -1,34 +1,6 @@
 {
   "tasks": [
     {
-      "id": "4e88d018-0301-4ecf-af26-4358e63fc5df",
-      "name": "teste",
-      "done": false,
-      "createdAt": {
-        "dia": "29",
-        "mes": "08",
-        "ano": "2023"
-      }
-    },
-    {
-      "id": "b1ce19e2-e414-4f49-b3ac-b72672e5c574",
-      "name": "aaaaaaaa",
-      "done": false,
-      "createdAt": {
-        "dia": "29",
-        "mes": "08",
-        "ano": "2023"
-      }
-    },
-    {
-      "id": "cdb0a0d1-f7a8-4687-94e3-e6d60410d5c2",
-      "name": "ssssss",
-      "done": false,
-      "createdAt": {
-        "dia": "29",
-        "mes": "08",
-        "ano": "2023"
-      }
     }
   ]
 }

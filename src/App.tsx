@@ -50,7 +50,7 @@ const App: React.FC = () => {
   const dataCreated = new Date()
   const day = dataCreated.getDate().toString().padStart(2, '0')
   const month = String(dataCreated.getMonth() + 1).padStart(2, '0');
-  const year = dataCreated.getFullYear()
+  const year = String(dataCreated.getFullYear()).padStart(2, '0')
 
   const addTask = useCallback((name: string) => {
 
@@ -80,28 +80,36 @@ const App: React.FC = () => {
   }, [day, month, year])
 
 
-
   const editListTask = () => {
-    const editListTask = [...tasks];
-    const index = editListTask.findIndex(item => item.id == editTask?.id);
+    const editedTaskIndex = tasks.findIndex(item => item.id === editTask?.id);
+    const updatedTasks = [...tasks];
+    updatedTasks[editedTaskIndex].name = taskModal;
 
-    editListTask[index].name = taskModal;
+    updatedTasks[editedTaskIndex].createdAt = {
+      dia: day,
+      mes: month,
+      ano: year,
+    };
+
     if (taskModal.length < 5) {
-      return alert('Por favor digite uma descrição com no mínimo 5 caractéres')
+      return alert('Por favor digite uma descrição com no mínimo 5 caractéres');
     }
+
     fetch(`${API_BASE_URL}/tasks/${editTask?.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ name: taskModal }),
+      body: JSON.stringify(updatedTasks[editedTaskIndex]),
     }).then(response => {
       if (response.ok) {
-        setTasks(editListTask);
+        setTasks(updatedTasks);
         setEditModal(false);
+        setTaskModal('');
       }
     });
   };
+
 
   const deleteListTask = () => {
     const index = tasks.findIndex(item => item.id === taskDelete?.id);
@@ -139,7 +147,19 @@ const App: React.FC = () => {
         orderTasks.sort((a, b) => a.name.localeCompare(b.name));
         break;
       case 'creationDate':
-        orderTasks.sort((a, b) => new Date(a.createdAt.dia).getTime() && new Date(a.createdAt.mes).getTime() && new Date(a.createdAt.ano).getTime() - new Date(b.createdAt.dia).getTime() && new Date(b.createdAt.mes).getTime() && new Date(b.createdAt.ano).getTime());
+        orderTasks.sort((a, b) => {
+          const dateA = new Date(
+            Number(a.createdAt.ano),
+            Number(a.createdAt.mes) - 1,
+            Number(a.createdAt.dia)
+          );
+          const dateB = new Date(
+            Number(b.createdAt.ano),
+            Number(b.createdAt.mes) - 1,
+            Number(b.createdAt.dia)
+          );
+          return dateA.getTime() - dateB.getTime();
+        });
         break;
       case 'status':
         orderTasks.sort((a, b) => a.done === b.done ? 0 : a.done ? 1 : -1);
@@ -151,15 +171,35 @@ const App: React.FC = () => {
     setTasks(orderTasks);
   };
 
+  const toggleTask = (taskId: string) => {
+    const updatedTasks = tasks.map(task => {
+      if (task.id === taskId) {
+        const updatedTask = { ...task, done: !task.done };
 
+        fetch(`${API_BASE_URL}/tasks/${taskId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(updatedTask),
+        }).then(response => {
+          if (response.ok) {
+            setTasks(prevTasks =>
+              prevTasks.map(prevTask =>
+                prevTask.id === taskId ? updatedTask : prevTask
+              )
+            );
+          }
+        });
 
-  const toggleTask = useCallback((taskId: string) => {
-    setTasks(prevTasks =>
-      prevTasks.map(task =>
-        task.id === taskId ? { ...task, done: !task.done } : task
-      )
-    );
-  }, []);
+        return updatedTask;
+      }
+      return task;
+    });
+
+    setTasks(updatedTasks);
+  };
+
 
   useEffect(() => {
     if (inputRef.current) {
