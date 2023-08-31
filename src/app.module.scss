@@ -13,27 +13,27 @@
   position: relative;
   width: 100%;
   margin: 50px auto;
-  // padding: 60px;
   padding: 20px;
   background-color: #17181f;
-  @include step3v2(3px, red, white);
+  @include step3v2(3px, #e75a10, white);
 }
 
 .retroTitleContainer {
   position: absolute;
-  top: -35px;
-  top: -35px;
+  top: -10px;
   left: 10px;
   max-width: 180px;
-  max-height: 50px;
+  max-height: 10px;
   background-color: #17181f;
   padding: 5px 10px;
   z-index: 1;
 }
 
 .retroTitle {
+  position: relative;
+  top: -29px;
   color: #fff;
-  font-size: 12px;
+  font-size: 22px;
 }
 
 #retroRender {
@@ -55,9 +55,12 @@
   align-items: center;
   padding: 15px 0px 0px 0px;
 }
-
-/* styles.css */
-
+.input{
+  position: relative;
+  top: -56px;
+  color: #fff;
+  justify-content: start;
+}
 .checkboxContainer {
   position: relative;
   cursor: pointer;
