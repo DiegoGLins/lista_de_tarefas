@@ -1,28 +1,6 @@
 {
   "tasks": [
     {
-      "name": "aaaaa",
-      "id": "9f1cc667-e134-4281-bd3c-6f4841d7f1f8"
-    },
-    {
-      "id": "8867f146-1247-4605-9efb-ef2124d82d1c",
-      "name": "gsdsgfasfg",
-      "done": false,
-      "createdAt": {
-        "dia": "29",
-        "mes": "08",
-        "ano": "2023"
-      }
-    },
-    {
-      "id": "f05caa9c-c07e-41f1-b679-f5b8f4729b48",
-      "name": "gsdgsdgs",
-      "done": false,
-      "createdAt": {
-        "dia": "29",
-        "mes": "08",
-        "ano": "2023"
-      }
     }
   ]
 }
