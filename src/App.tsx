@@ -230,17 +230,20 @@ const App: React.FC = () => {
         <Button color='error' variant='contained' onClick={() => setEditModal(false)}>Cancelar</Button>
         <Button color='success' variant='contained' onClick={editListTask}>Confirmar</Button>
       </BasicModal>
-
       <Component.Area>
         <Component.Header>
           <h1>Daily Quests ⚔</h1>
         </Component.Header>
+
         <section className={styles.retroSection}>
           <div className={styles.retroBotton}>
             <button onClick={() => addTask(inputText)}>Adicionar Tarefa</button>
           </div>
-          <Area>
 
+          <Area>
+            <div className='imageMario'>
+              <img src='./src/assets/Mario-gif.gif' alt='Mario' style={{ display: 'flex', maxWidth: '110px', paddingTop: '8px 350 0px 0px' }} />
+            </div>
             <div className={styles.retroTitleContainer}>
               <h3 className={styles.retroTitle}>Adicionar Quest</h3>
               <input className={styles.input} style={{ fontFamily: 'Pokemon GB', justifyContent: 'center', alignItems: 'center', height: '80px' }} type="text"
@@ -274,13 +277,15 @@ const App: React.FC = () => {
                   />
                   <div className={styles.checkboxGif}>
                     <div style={{ gap: '5px', display: 'flex', marginLeft: '35px', color: '#ccc', textDecoration: task.done ? 'line-through' : 'initial' }}>
-                      <span>{task.name} </span>
-                      <span>{`-`}</span>
-                      <span id='retroRender'>{task.createdAt.dia}</span>
-                      <span>{`/`}</span>
-                      <span id='retroRender'>{task.createdAt.mes}</span>
-                      <span>{`/`}</span>
-                      <span id='retroRender'>{task.createdAt.ano}</span>
+                      <p style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <p style={{ width: 'max-content', display: 'flex' }}>{task.name}</p>
+                        <p>{`-`}</p>
+                        <p id='retroRender'>{task.createdAt.dia}</p>
+                        <p>{`/`}</p>
+                        <p id='retroRender'>{task.createdAt.mes}</p>
+                        <p>{`/`}</p>
+                        <p id='retroRender'>{task.createdAt.ano}</p>
+                      </p>
                     </div>
                   </div>
                 </div>
