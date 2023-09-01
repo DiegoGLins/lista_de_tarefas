@@ -5,6 +5,7 @@ color: #797a81;
 min-height: 100vh;
 display: flex;
 flex-direction: column;
+justify-content: flex-start;
 `
 
 export const Area = styled.div`
@@ -16,9 +17,11 @@ flex-direction: column;
 
 export const Header = styled.h1`
 margin: 0;
-padding: 40px 0px 0px;
+padding: 20px 0px 0px;
 color: #fff;
 text-align: center;
 border-bottom: 1px solid #444;
 padding-bottom: 20px;
+align-items: center;
+justify-content: center;
 `
