@@ -50,6 +50,7 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
   cursor: var(--retro-cursor);
+  width: 100%;
 
   /* Box */
   margin: 0px;
