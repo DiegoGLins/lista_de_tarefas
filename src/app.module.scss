@@ -12,9 +12,8 @@
 .retroSection {
   position: relative;
   width: 100%;
-  margin: 50px auto;
+  margin: 10px auto;
   display: flex;
-
   padding: 20px;
   background-color: #17181f;
   @include step3v2(3px, #e75a10, white);
