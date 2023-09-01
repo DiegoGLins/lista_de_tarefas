@@ -97,7 +97,7 @@ h1 {
   text-decoration: none solid rgb(33, 37, 41);
   word-spacing: 0px;
   margin: 0 0 8px 0;
-  display: block;
+  display: flex;
   transform: none;
   transition: all 0s ease 0s;
 }
@@ -148,8 +148,7 @@ section {
   text-align: left;
   text-indent: 0px;
   text-transform: none;
-  display: 'flex';
-  flex-direction: row;
+  display: flex;
   /* vertical-align: baseline; */
   white-space: normal;
   word-spacing: 0px;

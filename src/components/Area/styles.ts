@@ -3,12 +3,15 @@ import styled from 'styled-components';
 export const AreaStyled = styled.div`
 border-radius: 15px;
 padding: 10px;
-margin: 20px 0;
+margin: 130px 0px 0px 0px;
 display: flex;
 align-items: center;
 
-.image {
-    margin-right: 5px;
+.imageMario {
+    display: flex;
+    position: relative;
+    top: 2px;
+    right: 265px;
 }
 
 input {
