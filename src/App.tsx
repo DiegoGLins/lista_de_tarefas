@@ -234,12 +234,10 @@ const App: React.FC = () => {
         <Component.Header>
           <h1>Daily Quests ⚔</h1>
         </Component.Header>
-
         <section className={styles.retroSection}>
           <div className={styles.retroBotton}>
             <button onClick={() => addTask(inputText)}>Adicionar Tarefa</button>
           </div>
-
           <Area>
             <div className='imageMario'>
               <img src='./src/assets/Mario-gif.gif' alt='Mario' style={{ display: 'flex', maxWidth: '110px', paddingTop: '8px 350 0px 0px' }} />
