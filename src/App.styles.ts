@@ -3,13 +3,14 @@ import { styled } from 'styled-components'
 export const Container = styled.div`
 color: #797a81;
 min-height: 100vh;
+min-height: max-content;
 display: flex;
 flex-direction: column;
 justify-content: flex-start;
 `
 
 export const Area = styled.div`
-margin: auto;
+margin: 50px auto 50px;
 max-width: 980px;
 display: flex;
 flex-direction: column;
