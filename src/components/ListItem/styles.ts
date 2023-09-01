@@ -11,6 +11,8 @@ export const ItemStyled = styled.div<ItemStyledProps>`
     border-radius: 10px;
     align-items: center;
     margin-top: 10px;
+    width: 100%;
+    height: fit-content;
 
     input {
     width: 25px;
