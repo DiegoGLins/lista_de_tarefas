@@ -1,3 +1,8 @@
+Para acessar nossa aplicação você pode utilizar o link abaixo disponibilizado, no entanto para que ela seja funcional é necessario rodar a API para que o CRUD funcione.
+Você pode acessar a API através desse link utilizando a porta de sua preferência : json-server --watch db.json --port 3000. Aqui utilizamos a porta 3000, mas fique a vontade para alterar a por se quiser.
+Em seguida acesse a aplicação atráves desse link: https://lista-de-tarefas-sepia.vercel.app/
+
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
