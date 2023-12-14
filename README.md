@@ -10,7 +10,7 @@ Para acessar nossa aplicação você pode utilizar o link abaixo disponibilizado
 Você pode acessar a API através desse link: json-server --watch db.json --port 3000. Aqui utilizamos a porta 3000, mas fique a vontade para alterar a porta se quiser.
 Em seguida acesse a aplicação atráves desse link: https://lista-de-tarefas-sepia.vercel.app/
 
-<p>
+<p aling='center>
    <img width='450' src='src/assets/app_pokemon_home.jpg'/>
 </p>
 
