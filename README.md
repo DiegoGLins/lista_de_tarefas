@@ -11,7 +11,7 @@ Você pode acessar a API através desse link: json-server --watch db.json --port
 Em seguida acesse a aplicação atráves desse link: https://lista-de-tarefas-sepia.vercel.app/
 
 <p align='center'>
-   <img width='450' src='src/assets/app_pokemon_home.jpg'/>
+   <img width='450' src='./src/assets/app_pokemon_home.jpg'/>
 </p>
 
 # React + TypeScript + Vite
