@@ -8,6 +8,7 @@ import { Alert, Button, IconButton, Snackbar, TextField } from '@mui/material';
 import { v4 as uuidv4 } from 'uuid';
 import trashCanImage from './assets/trashCan.png';
 import featherImage from './assets/Feather.png';
+import MarioHiroshi from '/Mario-gif.gif'
 
 
 import React, { useState, useEffect, useRef, useCallback, useMemo } from 'react';
@@ -240,7 +241,7 @@ const App: React.FC = () => {
           </div>
           <Area>
             <div className='imageMario'>
-              <img src='./src/assets/Mario-gif.gif' alt='Mario' style={{ display: 'flex', maxWidth: '110px', paddingTop: '8px 350 0px 0px' }} />
+              <img src={MarioHiroshi} alt='Mario' style={{ display: 'flex', maxWidth: '110px', paddingTop: '8px 350 0px 0px' }} />
             </div>
             <div className={styles.retroTitleContainer}>
               <h3 className={styles.retroTitle}>Adicionar Quest</h3>
