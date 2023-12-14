@@ -10,6 +10,10 @@ Para acessar nossa aplicação você pode utilizar o link abaixo disponibilizado
 Você pode acessar a API através desse link: json-server --watch db.json --port 3000. Aqui utilizamos a porta 3000, mas fique a vontade para alterar a porta se quiser.
 Em seguida acesse a aplicação atráves desse link: https://lista-de-tarefas-sepia.vercel.app/
 
+<p align='center'>
+   ![app_todoList_tarefasConcluidas](https://github.com/DiegoGLins/lista_de_tarefas/assets/107010634/5833e596-49f6-4afe-906b-2aa9824f0f63)
+</p>
+
 
 # React + TypeScript + Vite
 
