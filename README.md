@@ -9,6 +9,7 @@ utilizados no jogo pelo Mario. Ao clicar na check box a imagem é alterada para 
 Para acessar nossa aplicação você pode utilizar o link abaixo disponibilizado, no entanto para que ela seja funcional é necessario rodar a API simulada para que o CRUD funcione.
 Você pode acessar a API através desse link: json-server --watch db.json --port 3000. Aqui utilizamos a porta 3000, mas fique a vontade para alterar a porta se quiser.
 Em seguida acesse a aplicação atráves desse link: https://lista-de-tarefas-sepia.vercel.app/
+![app_pokemon_home](https://github.com/DiegoGLins/lista_de_tarefas/assets/107010634/28dec65d-265e-498c-b21f-ec0869d5de9c)
 
 # React + TypeScript + Vite
 
